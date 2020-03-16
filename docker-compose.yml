@@ -17,5 +17,4 @@ services:
     - ./src:/data
     - ./nginx/conf.d:/etc/nginx/conf.d
     environment:
-      VIRTUAL_HOST: todo.localhost
-
+      VIRTUAL_HOST: todo.docker.dev
