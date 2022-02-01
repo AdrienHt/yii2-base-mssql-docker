@@ -2,17 +2,19 @@ version: '3.7'
 
 services:
   db:
-    image: mcr.microsoft.com/mssql/server:2017-latest
+    image: mysql/mysql-server:latest
     ports:
-      - 30101:1433
+      - "3306:3306"
     environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=Yii2-base
+      - MYSQL_DATABASE=yii2-base
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
 
   app:
     image: wyveo/nginx-php-fpm:latest
     depends_on:
       - db
+    working_dir: /data
     volumes:
     - ./src:/data
     - ./nginx/conf.d:/etc/nginx/conf.d
